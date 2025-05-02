@@ -1,8 +1,11 @@
-#!name=小红书视频屏蔽
+#!name=看你妈短视频：小红书
 #!desc=屏蔽小红书的视频，让你专心做自己的事情
-#!src=https://raw.githubusercontent.com/
+#!src=https://raw.githubusercontent.com/Junyi-99/Shadowrocket-Modules/refs/heads/main/%E5%B0%8F%E7%BA%A2%E4%B9%A6.module
 #!author=Junyi-99
 #!notes=Chekout the github repo: https://github.com/Junyi-99/ShadowrocketModules
+
+[Script]
+xhsfeed=type=http-response,pattern=^https://rec.xiaohongshu\.(com|net|cn)\/api\/.*/homefeed\?.*,requires-body=1,script-path=http://192.168.82.232:8000/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%84%9A%E6%9C%AC.js?t=6
 
 [MITM]
 hostname = %APPEND% *.xhscdn.com, *.xhscdn.net, *.xhscdn.cn, *.xiaohongshu.com, *.xiaohongshu.net, *.xiaohongshu.cn, *.baidu.com, *.xtra.science
@@ -10,11 +13,29 @@ hostname = %APPEND% *.xhscdn.com, *.xhscdn.net, *.xhscdn.cn, *.xiaohongshu.com, 
 [Rule]
 # 测试用
 URL-REGEX,^https?:\/\/.*xtra\.science\/.*,REJECT
+
 # 屏蔽 视频内容
 URL-REGEX,^https?:\/\/.*\.xhscdn\.(com|net|cn)\/.*mp4.*,REJECT
 
-# 屏蔽短视频的图片
-# URL-REGEX,https?:\/\/sns-.*\.xhscdn\.(com|net|cn)\/.*imageView.*(imageMogr2).*,REJECT
+# 屏蔽短视频的图片（不屏蔽头像，只屏蔽 video frame image）
+URL-REGEX,https?:\/\/sns-.*\.xhscdn\.(com|net|cn)\/(?!avatar\/).*imageView.*[?&]sc=V_FRM(\b|&),REJECT
+# http://sns-na-i10.xhscdn.com/110/0/01e804ce8509ec3e0010000000019652c749ea_0.jpg?imageView2/2/w/1080/format/jpg&ap=1&sc=V_FRM
+
+# 帖子图片
+# http://sns-na-i10.xhscdn.com/1040g00831gujsqqo3o6g5puu48v3jl25817aguo?imageView2/2/w/540/format/jpg/q/75%7CimageMogr2/strip&redImage/frame/0&ap=11&sc=HF_PRV
+
+# 头像
+# https://sns-avatar-bak.xhscdn.com/avatar/1040g2jo31dveemo3gk105ptf32nlvu28cpelrv8?imageView2/2/w/120/format/jpg
+
+# 视频预览图
+# http://sns-na-i10.xhscdn.com/1040g2sg31gvpjm5e3c705q00c2lj9f3h1tvkuq0?imageView2/2/w/540/format/jpg/q/75%7CimageMogr2/strip&redImage/frame/0&ap=11&sc=HF_PRV
+
+# 屏蔽 视频Tab
+URL-REGEX,^https?:\/\/.*.xiaohongshu\.(com|net|cn)\/api/.*/homefeed/padtv.*,REJECT
+
+# 屏蔽 购物Tab
+URL-REGEX,^https?:\/\/.*.xiaohongshu\.(com|net|cn)\/api/.*/mall/.*,REJECT
+
 # URL-REGEX,^https?:\/\/.*tracker\.xiaohongshu\.(com|net|cn)\/.*,REJECT
 # URL-REGEX,^https?:\/\/.*.xiaohongshu\.(com|net|cn)\/.*collect,REJECT
 
