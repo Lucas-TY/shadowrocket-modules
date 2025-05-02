@@ -1,6 +1,6 @@
 /**************************
 小红书内容过滤（移除视频内容）
-订阅地址: https://raw.githubusercontent.com/
+订阅地址: https://raw.githubusercontent.com/Junyi-99/Shadowrocket-Modules/refs/heads/main/scripts/rednote.js
 Update: May 3, 2025
 Author: @Junyi-99
 ***************************/
