@@ -7,6 +7,7 @@ Author: @Junyi-99
 
 // 获取响应内容
 let body = $response.body;
+console.log("🍎 小红书脚本开始执行");
 try {
     // 尝试解析 JSON
     let obj = JSON.parse(body);
