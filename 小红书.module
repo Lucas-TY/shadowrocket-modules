@@ -16,12 +16,12 @@ URL-REGEX,^https?:\/\/.*xtra\.science\/.*,REJECT
 
 # 屏蔽 视频内容
 URL-REGEX,^https?:\/\/.*\.xhscdn\.(com|net|cn)\/.*mp4.*,REJECT
-[Rule]
-# 屏蔽所有带 video 的 xhscdn.com 域名
+
+# 直接拦掉所有包含 video 的 xhscdn.com 域名
 DOMAIN-KEYWORD,video.xhscdn.com,REJECT
 
-# 兜底拦截 video 域名下的资源
-URL-REGEX,^https?:\/\/.*video.*\.xhscdn\.com\/.*,REJECT
+# 兜底拦截所有 mp4 / m3u8 视频
+URL-REGEX,^https?:\/\/.*\.xhscdn\.com\/.*\.(mp4|m3u8)(\?.*)?$,REJECT
 
 # 屏蔽短视频的图片（不屏蔽头像，只屏蔽 video frame image）
 URL-REGEX,https?:\/\/sns-.*\.xhscdn\.(com|net|cn)\/(?!avatar\/).*imageView.*[?&]sc=V_FRM(\b|&),REJECT
