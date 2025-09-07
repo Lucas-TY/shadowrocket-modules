@@ -46,6 +46,10 @@ URL-REGEX,^https?:\/\/.*.xiaohongshu\.(com|net|cn)\/api/.*/mall/.*,REJECT
 # URL-REGEX,^https?:\/\/.*.xiaohongshu\.(com|net|cn)\/.*collect,REJECT
 
 # 其他
+DOMAIN-SUFFIX,sns-video-zl.xhscdn.com,REJECT
+DOMAIN-SUFFIX,sns-video-hw.xhscdn.com,REJECT
+DOMAIN-SUFFIX,sns-video-primary.xhscdn.com,REJECT
+DOMAIN-SUFFIX,sns-video-al.xhscdn.com,REJECT
 DOMAIN-SUFFIX,ads-img-al.xhscdn.com,REJECT
 DOMAIN-SUFFIX,xhscdn.com.cdn.cengcloud.net,REJECT
 DOMAIN-SUFFIX,ads-video-al.xhscdn.com,REJECT
